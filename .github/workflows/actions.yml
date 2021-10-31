@@ -20,9 +20,5 @@ jobs:
         uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: Harinder
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
       - name: Log Greeting time
         run: echo "${{ steps.greet.outputs.time }}"
