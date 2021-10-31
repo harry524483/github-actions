@@ -8,14 +8,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: list files 
         run: |
           pwd 
           ls -a
+
       - name: Simple JS actions
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: Harinder
+          
       - name: Log Greeting time
         run: echo "${{ steps.greet.outputs.time }}"
