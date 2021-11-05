@@ -1,14 +1,26 @@
 name: Actions Workflows
 
 on: 
-  repository_dispatch:
-    types: [build]
+  # repository_dispatch:
+  #   types: [build]
   # schedule:
   #   - cron: "0/5 * * * *"
   # push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
-
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
+  push:
+    branches:
+      - main
+      - 'feature/*' # matches feature/featA, feature/featB but doesn't match for feature/feat/A (nested)
+      - 'feature/**' # it matches feature/featA, feature/featB, feature/feat/A
+      - '!feature/featC' # ignore feature/featC branch - ignore should be at the end
+    tags:
+      - v1.*
+    paths:
+      - '**.js' # runs only when changes are made in javascript files
+    # paths-ignore:
+    #   - 'docs/**'
+   
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
