@@ -5,9 +5,12 @@ on: [pull_request]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    # timeout-minutes: 360 - minutes before github cancel this job
     steps:
       - name: echo string
         run: echo "Hello World"
+        # timeout-minutes: 360 - minutes before github cancel this step
+        # continue-on-error: true - run subsequent steps even if this step fails
       - name: multiline script
         run: |
           node -v
