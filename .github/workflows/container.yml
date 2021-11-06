@@ -3,6 +3,26 @@ name: Container
 on: push
 
 jobs:
+  docker-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: node:12-alpine3.12
+    steps:
+      - name: Log node version
+        run: node -v
+
+      - name: Step with docker
+        uses: docker://node:14-alpine
+        with:
+          entrypoint: /bin/echo
+          args: Hello World!!
+
+      - name: Log node version
+        uses: docker://node:14-alpine
+        with:
+          entrypoint: /usr/local/bin/node
+          args: -v
+          
   node-docker:
     runs-on: ubuntu-latest
     container:
@@ -13,4 +33,6 @@ jobs:
           node -v
           cat /etc/os-release
     
+
+
      
