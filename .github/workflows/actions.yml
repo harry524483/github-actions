@@ -10,7 +10,7 @@ on:
   #   types: [closed, assigned, opened, reopened]
   push:
     branches:
-      - main
+      # - main
       - 'feature/*' # matches feature/featA, feature/featB but doesn't match for feature/feat/A (nested)
       - 'feature/**' # it matches feature/featA, feature/featB, feature/feat/A
       - '!feature/featC' # ignore feature/featC branch - ignore should be at the end
